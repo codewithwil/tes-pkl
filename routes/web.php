@@ -9,7 +9,7 @@ use App\Http\Controllers\back\settingController;
 use App\Http\Controllers\back\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Redirect;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -73,3 +73,16 @@ Route::middleware(['auth'])->group(function(){
     Route::post('/jenis/delete/', [jenisSampahController::class, 'delete'])->name('jenis.delete');
 });
 
+//redirect ke dashboard sesuai level
+Route::get('/banksampah', function () {
+    $user = auth()->user();
+    if ($user->level == 'admin') {
+        return Redirect::route('admin.index');
+    } elseif ($user->level == 'supervisor') {
+        return Redirect::route('supervisor.index');
+    } elseif ($user->level == 'petugas') {
+        return Redirect::route('petugas.index');
+    } else {
+        return Redirect::route('home');
+    }
+})->name('redirect.dashboard');

@@ -15,8 +15,7 @@
 
     <div class="container">
         <div class="text-center mt-3">
-            <h2><b>Hallo selamat datang di kalkulator bank sampah {{ optional($setting)->nama_perusahaan }}</b></h2>
-
+            <h2><b>Hallo selamat datang di kalkulator bank sampah </b></h2>
             <h3 class="mb-4">Pilih sampah yang ingin kamu hitung</h3>
         </div>
         <div class="row">
@@ -42,8 +41,16 @@
                     <input type="number" class="form-control" id="jumlah" placeholder="Masukan jumlah berat yang ingin kamu hitung" min="0" step="0.01">
                 </div>
                 <button id="hitung" class="btn btn-primary mb-3">Hitung</button> <br>
-                <img class="mt-4" src="{{ asset('storage/back/logo/' . optional($setting)->foto_perusahaan) }}" alt=" Logo" class="brand-image img-circle elevation-3 rounded-circle" style="opacity: .8" width="150px">
-
+                <div style="float:left;">
+                    <img class="mt-4" src="{{ asset('storage/back/logo/' . optional($setting)->foto_perusahaan) }}" alt="Logo" class="brand-image img-circle elevation-3 rounded-circle" style="opacity: .8" width="150px">
+                </div>
+                <div style="float:left; margin-left:10px; font-weight:400">
+                    <p class="mt-4">nama perusahaan: {{ optional($setting)->nama_perusahaan }}</p>
+                    <p class="">alamat: {{ optional($setting)->alamat }}</p>
+                    <p class="">nomor telepon: {{ optional($setting)->telepon }}</p>
+                    <p class="">website: {{ optional($setting)->web }}</p>
+                </div>
+                <div style="clear:both;"></div> <!-- Clear float -->
             </div>
 
             <div class="col-md-6">

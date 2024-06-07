@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Redirect;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('front.home.index');
 });
 
 Route::middleware(['guest'])->group(function(){

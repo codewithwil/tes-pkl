@@ -3,7 +3,7 @@
     <a href="index3.html" class="brand-link">
       @php
     $setting = \App\Models\setting::first();
-@endphp
+      @endphp
 
 <img src="{{ asset('storage/back/logo/' . optional($setting)->foto_perusahaan) }}" alt=" Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
 <span class="brand-text font-weight-light">{{ optional($setting)->nama_perusahaan }}</span>

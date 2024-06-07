@@ -18,6 +18,7 @@ class UserAkses
         if(auth()->user()->level == $level){
             return $next($request);
         }
-        return response()->json(['Anda tidak diperbolehkan akses halaman ini.']);
+        return redirect()->route('redirect.dashboard');
+
     }
 }

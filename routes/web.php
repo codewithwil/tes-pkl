@@ -26,8 +26,8 @@ Route::get('/', function () {
 });
 
 Route::middleware(['guest'])->group(function(){
-    Route::get('/login', [AuthController::class, 'index'])->name('login'); 
-    Route::post('/login', [AuthController::class, 'login'] );     
+    Route::get('/login', [AuthController::class, 'index'])->name('login');
+    Route::post('/login', [AuthController::class, 'login'] );
 });
 
 Route::middleware(['auth'])->group(function(){
@@ -36,9 +36,9 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/banksampah', [DashboardController::class, 'index']);
     Route::get('/banksampah/admin', [DashboardController::class, 'admin'])->name('admin.index')->middleware('userAkses:admin');
     Route::get('/banksampah/petugas', [DashboardController::class, 'petugas'])->name('petugas.index')->middleware('userAkses:petugas');
-    Route::get('/banksampah/pengguna', [DashboardController::class, 'supervisor'])->name('supervisor.index')->middleware('userAkses:supervisor');
+    Route::get('/banksampah/supervisor', [DashboardController::class, 'supervisor'])->name('supervisor.index')->middleware('userAkses:supervisor');
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
- 
+
 
     //user
     Route::get('/user', [UserController::class, 'index'])->name('users.index');

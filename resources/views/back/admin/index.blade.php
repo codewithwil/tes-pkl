@@ -7,7 +7,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
 </head>
 <body>
 
@@ -39,8 +38,8 @@
         <!-- small box -->
         <div class="small-box bg-success">
           <div class="inner">
-            <h3><sup style="font-size: 20px"></sup></h3>
-            <p>sampah</p>
+            <h3>{{ $totalUser }} <sup style="font-size: 20px">user</sup></h3>
+            <p>Total user</p>
           </div>
           <div class="icon">
             <i class="ion ion-stats-bars"></i>
@@ -53,9 +52,9 @@
         <!-- small box -->
         <div class="small-box bg-warning">
           <div class="inner">
-            <h3></h3>
+            <h3>{{ $totalJenis }}<sup style="font-size: 20px">Jenis sampah</sup></h3>
 
-            <p>Pegawai </p>
+            <p>total jenis sampah </p>
           </div>
           <div class="icon">
             <i class="ion ion-person-add"></i>
@@ -68,9 +67,9 @@
         <!-- small box -->
         <div class="small-box bg-danger">
           <div class="inner">
-            <h3></h3>
+            <h3>{{ $totalKategori }} <sup style="font-size: 20px">Kategori</sup></h3>
 
-            <p>Jenis sampah</p>
+            <p>total kategori</p>
           </div>
           <div class="icon">
             <i class="ion ion-pie-graph"></i>

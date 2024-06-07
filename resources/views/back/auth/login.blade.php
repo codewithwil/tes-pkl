@@ -17,13 +17,18 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="../../index2.html"><b>Kalkulator bank sampah</b></a>
+    @php
+    $setting = \App\Models\setting::first();
+@endphp
+
+
+<img src="{{ asset('storage/back/logo/' . optional($setting)->foto_perusahaan) }}" alt=" Logo" width="100px" class="brand-image img-circle elevation-3" style="opacity: .8">
+
   </div>
   <!-- /.login-logo -->
   <div class="card">
     <div class="card-body login-card-body">
-      <p class="login-box-msg">Login</p>
-
+      <p class="login-box-msg">{{ optional($setting)->nama_perusahaan }}</p>
       <form action="" method="post">
         @csrf
         <div class="input-group mb-3">
@@ -61,13 +66,6 @@
       </div>
       <!-- /.social-auth-links -->
 
-      <p class="mb-1">
-        <a href="forgot-password.html">I forgot my password</a>
-      </p>
-      <p class="mb-0">
-        <a href="register.html" class="text-center">Register a new membership</a>
-      </p>
-    </div>
     <!-- /.login-card-body -->
   </div>
 </div>

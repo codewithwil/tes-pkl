@@ -102,18 +102,11 @@ class UserController extends Controller
             
         }
     }
-
     public function profile($id){
-        $user = User::find($id);
-    
-        if (!$user) {
-            return redirect()->back()->with('error', 'User not found');
-        }
-        return view('back.profile.index', [
-            'users' => $user,
+        return view('back.auth.profile',[
+            'users' => User::find($id)
         ]);
     }
-
     public function updateProfile(updateRequest $request, $id){
             $data = $request->validated();
          
@@ -152,4 +145,5 @@ class UserController extends Controller
                 ]);  
             }
         }
+  
 }

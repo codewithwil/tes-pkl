@@ -44,15 +44,16 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/user', [UserController::class, 'index'])->name('users.index');
     Route::get('/user/create', [UserController::class, 'create'])->name('users.tambah');
     Route::get('/user/edit/{id}', [UserController::class, 'edit'])->name('users.edit');
-    Route::get('/user/profile/{id}', [UserController::class, 'profile'])->name('users.profile');
     Route::post('/user/store', [UserController::class, 'store'])->name('users.store');
     Route::post('/user/update/{id}', [UserController::class, 'update'])->name('users.update');
-    Route::post('/user/profile/update/{id}', [UserController::class, 'updateProfile'])->name('users.profile.update');
 
-   //setting
-   Route::get('/setting', [settingController::class, 'index'])->name('setting.index');
-   Route::post('/setting/store', [settingController::class, 'store'])->name('setting.store');
-   Route::post('/setting/update{id}', [settingController::class, 'update'])->name('setting.update');
+    //profile
+    Route::get('/profile/{id}', [UserController::class, 'profile'])->name('profile');
+
+    //setting
+    Route::get('/setting', [settingController::class, 'index'])->name('setting.index');
+    Route::post('/setting/store', [settingController::class, 'store'])->name('setting.store');
+    Route::post('/setting/update{id}', [settingController::class, 'update'])->name('setting.update');
 
 
     //kategori sampah

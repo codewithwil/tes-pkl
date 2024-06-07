@@ -2,23 +2,33 @@
 
 namespace App\Http\Controllers\back;
 
-use App\Http\Controllers\Controller;
-use App\Models\jenisSampah;
+use App\{
+    Http\Controllers\Controller,
+    Models\jenisSampah,
+    Models\kategori
+};
+
+use Illuminate\{
+    Http\Request,
+    Support\Facades\DB
+};
 use Exception;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class jenisSampahController extends Controller
 {
     public function index(){
-        $jenis = jenisSampah::get();
+        $jenis = jenisSampah::with('kategori')->get();
         return view('back.jenis.index',[
             'jenis'  => $jenis
         ]);
     }
 
     public function create(){
-        return view('back.jenis.create');
+        $kategori = kategori::get();
+        return view('back.jenis.create', [
+            'kategori' => $kategori
+        ]);
     }
 
     public function store( Request $request) {
@@ -32,6 +42,12 @@ class jenisSampahController extends Controller
      
         DB::beginTransaction();
         try {
+            if ($request->hasFile('foto')) {
+                $checkingFile = $request->file('foto');
+                $filename = $checkingFile->getClientOriginalName();
+                $path = $checkingFile->storeAs('public/back/foto-jenis-sampah',$filename);
+                $data['foto'] = $filename;
+            }
             jenisSampah::create($data);
             DB::commit();
 
@@ -67,7 +83,17 @@ class jenisSampahController extends Controller
         DB::beginTransaction();
         try {
 
-    
+            if ($request->hasFile('foto')) {
+                $checkingFile = $request->file('foto');
+                $filename = $checkingFile->getClientOriginalName();
+                $path = $checkingFile->storeAs('public/back/foto-jenis-sampah',$filename);
+                $data['foto'] = $filename;
+        
+                $jenis = jenisSampah::find($id_jenis);
+                if ($jenis->foto) {
+                    Storage::delete('public/back/foto-jenis-sampah/' . $jenis->foto);
+                }
+            }
             $jenis = jenisSampah::find($id_jenis);
             $jenis->update($data);
             DB::commit();

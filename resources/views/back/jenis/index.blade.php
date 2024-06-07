@@ -51,8 +51,8 @@
                   <thead>
                   <tr>
                     <th>No</th>
-                    <th>nama</th>
                     <th>foto</th>
+                    <th>nama</th>
                     <th>kategori sampah</th>
                     <th>deskripsi</th>
                     <th>harga</th>
@@ -62,11 +62,14 @@
                   @foreach ($jenis as $item)
                   <tr>
                     <td>{{$loop->iteration}}</td>
+                    <td><img src="{{asset('storage/back/foto-jenis-sampah/'.$item->foto) }}" class="img-thumbnail img-preview" alt="Foto sampah" width="120px">                              </td>
                     <td>{{$item->nama}}</td>
+                    <td>{{$item->kategori->nama_kategori}}</td>
+                    <td>{{$item->deskripsi}}</td>
       
                     <td>
-                        <a href="{{route('jenis.edit', $item->id_kategori)}}" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fas fa-pen"></i></a>
-                        <a href="#" onclick="deleteKategori(this)" data-id="{{$item->id_kategori}}" 
+                        <a href="{{route('jenis.edit', $item->id_jenis)}}" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fas fa-pen"></i></a>
+                        <a href="#" onclick="deleteKategori(this)" data-id="{{$item->id_jenis}}" 
                           class="btn btn-danger shadow btn-xs sharp"><i class="fas fa-trash"></i></a>
                     </td>
                   </tr>

@@ -47,6 +47,10 @@
             <form action="{{route('jenis.store')}}" method="post" enctype="multipart/form-data">
                 @csrf
               <div class="card-body">
+                <div class="form-group">
+                  <label for="foto">Foto sampah</label>
+                      <input type="file" class="form-control" id="foto" name="foto">
+                  </div>
 
                 <div class="form-group">
                     <label for="nama">Nama sampah</label>
@@ -57,14 +61,20 @@
                     </div>
                 @enderror
                   </div>
+             
                   <div class="form-group">
-                    <label for="foto">Foto sampah</label>
-                    <div class="input-group">
-                      <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="foto" name="foto">
-                        <label class="custom-file-label" for="foto">Choose file</label>
-                      </div>
+                    <label for="kategori">Kategori sampah</label>
+                    <select name="kategori_id" id="kategori" class="form-control">
+                      @foreach ($kategori as $item)
+                      <option value="hidden" selected>--- pilih kategori sampah ---</option>
+                          <option value="{{$item->id_kategori}}">{{$item->nama_kategori}}</option>
+                      @endforeach
+                    </select>
+                    @error('nama')
+                    <div class="invalid-feedback">
+                        {{$message}}
                     </div>
+                @enderror
                   </div>
                   <div class="form-group">
                     <label for="deskripsi">deskripsi</label>

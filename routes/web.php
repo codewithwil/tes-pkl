@@ -5,6 +5,7 @@ use App\Http\Controllers\back\DashboardController;
 use App\Http\Controllers\back\hargacontroller;
 use App\Http\Controllers\back\jenisSampahController;
 use App\Http\Controllers\back\kategoriController;
+use App\Http\Controllers\back\settingController;
 use App\Http\Controllers\back\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -30,14 +31,16 @@ Route::middleware(['guest'])->group(function(){
 });
 
 Route::middleware(['auth'])->group(function(){
+
+    //dashboard
     Route::get('/banksampah', [DashboardController::class, 'index']);
     Route::get('/banksampah/admin', [DashboardController::class, 'admin'])->name('admin.index')->middleware('userAkses:admin');
     Route::get('/banksampah/petugas', [DashboardController::class, 'petugas'])->name('petugas.index')->middleware('userAkses:petugas');
     Route::get('/banksampah/pengguna', [DashboardController::class, 'supervisor'])->name('supervisor.index')->middleware('userAkses:supervisor');
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
  
-    Route::get('/harga', [hargacontroller::class, 'index'])->name('harga.index');
 
+    //user
     Route::get('/user', [UserController::class, 'index'])->name('users.index');
     Route::get('/user/create', [UserController::class, 'create'])->name('users.tambah');
     Route::get('/user/edit/{id}', [UserController::class, 'edit'])->name('users.edit');
@@ -46,6 +49,13 @@ Route::middleware(['auth'])->group(function(){
     Route::post('/user/update/{id}', [UserController::class, 'update'])->name('users.update');
     Route::post('/user/profile/update/{id}', [UserController::class, 'updateProfile'])->name('users.profile.update');
 
+   //setting
+   Route::get('/setting', [settingController::class, 'index'])->name('setting.index');
+   Route::post('/setting/store', [settingController::class, 'store'])->name('setting.store');
+   Route::post('/setting/update{id}', [settingController::class, 'update'])->name('setting.update');
+
+
+    //kategori sampah
     Route::get('/kategori', [kategoriController::class, 'index'])->name('kategori.index');
     Route::get('/kategori/create', [kategoriController::class, 'create'])->name('kategori.tambah');
     Route::get('/kategori/edit/{id_kategori}', [kategoriController::class, 'edit'])->name('kategori.edit');
@@ -53,6 +63,7 @@ Route::middleware(['auth'])->group(function(){
     Route::post('/kategori/update/{id_kategori}', [kategoriController::class, 'update'])->name('kategori.update');
     Route::post('/kategori/delete/', [kategoriController::class, 'delete'])->name('kategori.delete');
 
+    //jenis sampah
     Route::get('/jenis', [jenisSampahController::class, 'index'])->name('jenis.index');
     Route::get('/jenis/create', [jenisSampahController::class, 'create'])->name('jenis.tambah');
     Route::get('/jenis/edit/{id_kategori}', [jenisSampahController::class, 'edit'])->name('jenis.edit');

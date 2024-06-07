@@ -67,11 +67,11 @@
               <p>User</p>
             </a>
           </li>
-          <li class="nav-header">Pengaturan</li>
+          <li class="nav-header">Informasi perusahaan</li>
           <li class="nav-item">
-            <a href="" class="nav-link">
+            <a href="{{route('setting.index')}}" class="nav-link">
               <i class="nav-icon fas fa-cog"></i>
-              <p>Pengaturan</p>
+              <p>setting</p>
             </a>
           </li>
         </ul>

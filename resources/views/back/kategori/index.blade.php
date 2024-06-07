@@ -44,8 +44,8 @@
                                 <li>{{$error}}</li>
                             @endforeach
                         </ul>
-                    </div> 
-                </div> 
+                    </div>
+                </div>
                 @endif
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
@@ -59,11 +59,14 @@
                   <tr>
                     <td>{{$loop->iteration}}</td>
                     <td>{{$item->nama_kategori}}</td>
-      
+
                     <td>
                         <a href="{{route('kategori.edit', $item->id_kategori)}}" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fas fa-pen"></i></a>
-                        <a href="#" onclick="deleteKategori(this)" data-id="{{$item->id_kategori}}" 
-                          class="btn btn-danger shadow btn-xs sharp"><i class="fas fa-trash"></i></a>
+                        @if (Auth::user()->level !== 'petugas')
+                        <a href="#" onclick="deleteKategori(this)" data-id="{{$item->id_kategori}}"
+                            class="btn btn-danger shadow btn-xs sharp"><i class="fas fa-trash"></i></a>
+                        @endif
+
                     </td>
                   </tr>
                   @endforeach
@@ -75,7 +78,7 @@
                   </tr>
                   </tfoot>
                 </table>
-                
+
               </div>
               <!-- /.card-body -->
             </div>
@@ -147,13 +150,13 @@
             {{ session()->forget('success') }}
         @endif
     });
-  </script>  
-  
+  </script>
+
 <script>
   function deleteKategori(e) {
       let id_kategori = e.getAttribute('data-id');
       console.log("ID Kategori yang Dihapus:", id_kategori);
-  
+
       Swal.fire({
           title: 'Delete Kategori ' + id_kategori,
           text: "Are you sure?",
@@ -169,8 +172,8 @@
                   url: '{{ route("kategori.delete") }}',
                   data: {
                       _token: '{{ csrf_token() }}',
-                      _method: 'POST', 
-                      id_kategori: id_kategori 
+                      _method: 'POST',
+                      id_kategori: id_kategori
                   },
                   dataType: "json",
                   success: function (response) {

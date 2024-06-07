@@ -57,7 +57,7 @@
                     @else
                     <small>Foto lama:</small>
                         <div class="mt-2" >
-                            <img src="{{asset('storage/back/setting/'.$setting->foto_perusahaan) }}" class="img-thumbnail img-preview" alt="Foto perusahaan" width="120px">
+                            <img src="{{asset('storage/back/logo/'.$setting->foto_perusahaan) }}" class="img-thumbnail img-preview" alt="Foto perusahaan" width="120px">
                         </div>
                     @endempty
                       </div>
@@ -124,16 +124,6 @@
                       </div>
                   @enderror
                     </div>
-
-                    <div class="form-group">
-                      <label for="bata_pinjam">Batas Pinjam koperasi</label>
-                      <input type="number" class="form-control" id="bata_pinjam" name="bata_pinjam" placeholder="isi bata_pinjam..." value="{{$setting->batas_pinjam}}">
-                      @error('bata_pinjam')
-                      <div class="invalid-feedback">
-                          {{$message}}
-                      </div>
-                  @enderror
-                 </div>
 
 
                 <button type="submit" class="btn me-2 btn-primary">Submit</button>

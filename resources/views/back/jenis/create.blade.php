@@ -40,10 +40,10 @@
                             <li>{{$error}}</li>
                         @endforeach
                     </ul>
-                </div> 
-            </div> 
+                </div>
+            </div>
             @endif
-          
+
             <form action="{{route('jenis.store')}}" method="post" enctype="multipart/form-data">
                 @csrf
               <div class="card-body">
@@ -61,12 +61,12 @@
                     </div>
                 @enderror
                   </div>
-             
+
                   <div class="form-group">
                     <label for="kategori">Kategori sampah</label>
                     <select name="kategori_id" id="kategori" class="form-control">
+                        <option value="hidden" selected>--- pilih kategori sampah ---</option>
                       @foreach ($kategori as $item)
-                      <option value="hidden" selected>--- pilih kategori sampah ---</option>
                           <option value="{{$item->id_kategori}}">{{$item->nama_kategori}}</option>
                       @endforeach
                     </select>
@@ -126,6 +126,6 @@
     });
   </script>
 
-  
+
   @endpush
 @endsection

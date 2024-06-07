@@ -11,12 +11,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Data Pegawai</h1>
+            <h1>Data User</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Data Pegawai</li>
+              <li class="breadcrumb-item active">Data User</li>
             </ol>
           </div>
         </div>
@@ -44,8 +44,8 @@
                                 <li>{{$error}}</li>
                             @endforeach
                         </ul>
-                    </div> 
-                </div> 
+                    </div>
+                </div>
                 @endif
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
@@ -87,7 +87,7 @@
                   </tr>
                   </tfoot>
                 </table>
-                
+
               </div>
               <!-- /.card-body -->
             </div>
@@ -158,6 +158,6 @@
             {{ session()->forget('success') }}
         @endif
     });
-  </script>  
+  </script>
   @endpush
 @endsection
